@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>replit</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <websocket id="echo" src="wss://echowebsocket.dainfloop.repl.co">
-    <event class="opened">Successfully opened a WS connection!</event>
-    <event class="message" cloneparent="">{latestMessage}</event>
-    </websocket>
 
-    <button onclick="websocket.send('echo', prompt('What do you want to send to the server?'))">Send message!</button>
-  </body>
-  <script src="main.js"></script>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>replit</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div style="border:1px solid black;background-color:pink;float:right;">
+		<p>Does "Successfully opened a WS connection!" not pop up?<br>Try ping the server: <a href="https://echowebsocket.dainfloop.repl.co">https://echowebsocket.dainfloop.repl.co</a>&nbsp;&nbsp;</p>
+	</div>
+	<websocket id="echo" src="wss://echowebsocket.dainfloop.repl.co">
+		<event class="opened">Successfully opened a WS connection!</event>
+		<event class="message" clone_parent="#messagelog" clone_elementname="li" overwrite_style="display:list-item;">Message from
+			server: {latestMessage}</event>
+		<ul id="messagelog" style="list-style: square;">
+		</ul>
+	</websocket>
+
+	<button onclick="websocket.send('echo', prompt('What do you want to send to the server?'))">Send message!</button>
+</body>
+  
+<script src="main.js"></script>
+
 </html>
