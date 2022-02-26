@@ -46,7 +46,7 @@ class WebsocketHTMLAPI {
 
 const websocket = new WebsocketHTMLAPI();
 
-Object.values(document.all).forEach(element => {
+Array.from(document.querySelectorAll('websocket')).forEach(element => {
   if (element.tagName == "WEBSOCKET") {
     websocket.add(element)
   }
